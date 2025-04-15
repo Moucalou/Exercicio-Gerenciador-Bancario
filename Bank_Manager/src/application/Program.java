@@ -57,7 +57,7 @@ public class Program {
 				System.out.println("Created account " + number.getLast() + ". Owner " + owner.getLast() + ". Balance: R$ " + balance.getLast());
 				break;
 			case 2:
-				System.out.print("Please, insert the account you want to make a deposit: ");
+				System.out.print("Please, insert the account you want to deposit: ");
 				accountNumber = sc.nextInt();
 				sc.nextLine();
 				int index = number.indexOf(accountNumber);
@@ -69,6 +69,29 @@ public class Program {
 				System.out.println("Accomplished a deposit of R$ " + money + " at account " + accountNumber);
 				break;
 			case 3:
+				System.out.print("Please, insert the account you want to withdraw: ");
+				accountNumber = sc.nextInt();
+				sc.nextLine();
+				index = number.indexOf(accountNumber);
+				System.out.print("Enter the amount you want to withdraw: ");
+				money = sc.nextDouble();
+				newBalance = balance.get(index) - money;
+					if (newBalance <= 0) {
+						System.out.println("The current balance of this account is: R$" + balance.get(index));
+						System.out.print("Are you sure you want to continue? (y/n) ");
+						char withdraw = sc.next().charAt(0);
+						switch (withdraw) {
+						case 'y':
+							balance.set(index, newBalance);
+							System.out.println("This account is now NEGATIVE");
+							System.out.println("New Balance = R$ " + balance.get(index));
+							history.add("Withdrawed R$ " + money + " at account " + accountNumber);
+							break;
+						case 'n':
+							history.add("User tried to withdraw R$ " + money + " from account " + accountNumber + " but it gave up due new Balance is negative");
+							return;
+						}
+					}
 				break;
 			case 4:
 				break;
