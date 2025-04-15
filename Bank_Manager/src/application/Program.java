@@ -57,6 +57,16 @@ public class Program {
 				System.out.println("Created account " + number.getLast() + ". Owner " + owner.getLast() + ". Balance: R$ " + balance.getLast());
 				break;
 			case 2:
+				System.out.print("Please, insert the account you want to make a deposit: ");
+				accountNumber = sc.nextInt();
+				sc.nextLine();
+				int index = number.indexOf(accountNumber);
+				System.out.print("Enter the amount you want to deposit: ");
+				double money = sc.nextDouble();
+				double newBalance = money + balance.get(index);
+				balance.set(index, newBalance);
+				history.add("Accomplished a deposit of R$ " + money + " at account " + accountNumber);
+				System.out.println("Accomplished a deposit of R$ " + money + " at account " + accountNumber);
 				break;
 			case 3:
 				break;
