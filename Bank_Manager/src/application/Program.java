@@ -88,14 +88,27 @@ public class Program {
 							history.add("Withdrawed R$ " + money + " at account " + accountNumber);
 							break;
 						case 'n':
-							history.add("User tried to withdraw R$ " + money + " from account " + accountNumber + " but it gave up due new Balance is negative");
-							return;
+							System.out.println("Returning to the main menu.");
+							break;
 						}
 					}
 				break;
 			case 4:
+				System.out.print("Which account you want to check balance? ");
+				accountNumber = sc.nextInt();
+				sc.nextLine();
+				if (number.contains(accountNumber)) {
+					index = number.indexOf(accountNumber);
+					System.out.println("The current balance for the account " + accountNumber + " is R$ " + balance.get(index));
+				} else {
+					System.out.println("This account doesn't exist. Returning to main menu.");
+				}
 				break;
 			case 5:
+				System.out.println("=== HISTORIC OF MOVEMENTS ===");
+				for (int i=0; i<history.size(); i++) {
+					System.out.println(history.get(i));
+				}
 				break;
 			case 6:
 				break;
