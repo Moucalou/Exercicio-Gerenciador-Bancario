@@ -111,8 +111,23 @@ public class Program {
 				}
 				break;
 			case 6:
+				System.out.print("Please, insert the account you want to transfer from: ");
+				accountNumber = sc.nextInt();
+				index = number.indexOf(accountNumber);
+				System.out.print("Insert the amount of money you want to transfer: ");
+				money = sc.nextDouble();
+				System.out.print("Please, insert the account you want to transfer to: ");
+				int accountNumber2 = sc.nextInt();
+				newBalance = balance.get(index) - money;
+				balance.set(index, newBalance);
+				index = number.indexOf(accountNumber2);
+				newBalance = balance.get(index) + money;
+				balance.set(index, newBalance);
+				history.add("Transference of R$ " + money + " from account " + accountNumber + " to account " + accountNumber2);
+				System.out.println("Transference of R$ " + money + " from account " + accountNumber + " to account " + accountNumber2);
 				break;
 			case 7:
+				conti = 'n';
 				break;
 			}
 			
